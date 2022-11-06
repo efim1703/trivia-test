@@ -1,24 +1,8 @@
 # trivio-test
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Код однозначно можно доработать, если бы было гораздо больше времени:
+ -Вынети в универсальный компонент UserPage и CompanyPage 
+ -То же самое с EditModal и DeleteModal чтобы вынести логику и как-то её урезать
+ -Организовать подтягивание названия компании по id
+ -Больше валидации на input
+ 
+Не использовал пренципиально vuetify, чтобы показать, что понимаю как сверстать такие компоненты как select, text-field, input с типом date и прочее
