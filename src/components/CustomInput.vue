@@ -198,8 +198,6 @@ export default {
             padding-bottom: $spacing;
             pointer-events: none;
         }
+    }
 }
-}
-
-
 </style>

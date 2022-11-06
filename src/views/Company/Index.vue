@@ -9,10 +9,14 @@
         v-for="item in company" 
         :key="item.id"
         :item="item"
+        type="company"
         class="company-card"
         @delete-card="deleteCard($event)"
         @edit-card="editCard($event)"
       />
+      <custom-button class="add-button" @click="addItem()" color="#11d544">
+          Создать
+      </custom-button>
     </div>
 
     <app-modal v-model="modalDeleteIsShown">
@@ -27,9 +31,10 @@
           <p>Редактировать компанию:</p>
         </template>
         <template v-slot:inputs>
-          <div>
-            <custom-input :settingsForInput="{ title: 'Название компании', type: 'text' }" v-model="itemForModal.name" />
-          </div>
+          <custom-input 
+            :settingsForInput="{ title: 'Название компании', type: 'text' }" 
+            v-model="itemForModal.name" 
+          />
         </template>
       </edit-form>
 
@@ -39,6 +44,7 @@
 
 <script>
 import AppCard from '@/components/AppCard.vue'
+import CustomButton from '@/components/CustomButton.vue'
 import AppModal from '@/components/AppModal.vue'
 import EditForm from '@/components/EditForm.vue'
 import DeleteForm from '@/components/DeleteForm.vue'
@@ -49,6 +55,7 @@ export default {
   name: 'CompanyPage',
   components: {
     AppCard,
+    CustomButton,
     AppModal,
     EditForm,
     DeleteForm,
@@ -66,7 +73,7 @@ export default {
     ...mapState('company', ['company'])
   },
   methods: {
-    ...mapActions('company', ['updateCompany', 'deleteCompany']),
+    ...mapActions('company', ['updateCompany', 'deleteCompany', 'addCompany']),
 
     deleteCard(item) {
       this.modalDeleteIsShown = true
@@ -88,8 +95,16 @@ export default {
       this.itemForModal = {}
     },
     saveItem() {
-      this.updateCompany(this.itemForModal)
+      this.itemForModal.new === true ? this.addCompany(this.itemForModal) : this.updateCompany(this.itemForModal)
       this.closeEditModal()
+    },
+    addItem() {
+      this.itemForModal = {
+        id: Date.now().toString(36),
+        name: '',
+        new: true
+      }
+      this.modalEditIsShown = true
     },
     deleteItem() {
       this.deleteCompany(this.itemIdForDelete)
@@ -101,25 +116,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/variables.scss';
+  @import '@/assets/scss/variables.scss';
 
-.page-wrapper {
-  position: relative;
-}
-.title-page {
-  font-size: 28px;
-  font-weight: 700;
-  margin: 42px 0;
-}
-.company-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
+  .page-wrapper {
+    position: relative;
 
-  & .company-card {
-    flex: 1 1 calc(100%/4 - 30px);
+    & .title-page {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 42px 0;
+    }
+
+    & .company-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+
+      & .company-card {
+        flex: 1 1 calc(100%/4 - 30px);
+      }
+
+      & .add-button {
+        max-height: 40px;
+        max-width: 120px;
+        margin: auto;
+      }
+    }
   }
-
-}
-
 </style>

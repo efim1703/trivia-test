@@ -12,11 +12,6 @@ export default {
         type: String,
         default: '#3178be' 
     }
-  },
-  data() {
-    return {
-      
-    }
   }
 }
 </script>
@@ -37,5 +32,4 @@ button {
         opacity: 0.7;
     }
 }
-
 </style>

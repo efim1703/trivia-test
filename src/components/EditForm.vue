@@ -25,13 +25,11 @@ export default {
   name: 'EditForm',
   components: {
     CustomButton
-  },
-
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-
 .title-modal {
   text-align: center;
   font-size: 22px;

@@ -6,10 +6,13 @@
 
     <div class="select">
         <p 
-            :class="[{ 'border-radius-bottom-none select-focus' : showOptions }, 'title']" 
+            :class="[
+                { 'border-radius-bottom-none select-focus' : showOptions },
+                'title'
+             ]" 
             @click="clickSelect()"
         >
-            <span >{{ settingsForSelect.optionIsActive.name }}  </span>
+            <span >{{ settingsForSelect.optionIsActive }}  </span>
             <svg width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.48532 1.24264L4.24268 4.48528L1.00003 1.24264" stroke="#B4B4B4"/></svg>
         </p>
 
@@ -23,8 +26,6 @@
             </p>
         </div>
     </div>
-
-
   </div>
 </template>
 
@@ -48,7 +49,7 @@ export default {
             this.showOptions = !this.showOptions
         },
         clickOption(option) {
-            this.$emit('option-change',option.id);
+            this.$emit('option-change',option.name);
             this.showOptions = false
         }
     } 
@@ -94,6 +95,10 @@ export default {
             
             & svg {
                 margin-left: 6px;
+
+                & path {
+                    stroke: $dark;
+                }
             }
         }
 
@@ -113,9 +118,6 @@ export default {
             }
     
         }
-        }
-    
-    
+    }
 }
-
 </style>
