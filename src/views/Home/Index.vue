@@ -13,8 +13,6 @@
 
 export default {
   name: 'HomePage',
-  components: {
-  }
 }
 </script>
 
@@ -29,5 +27,4 @@ export default {
   text-align: center;
   font-size: 24px;
 }
-
 </style>

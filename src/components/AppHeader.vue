@@ -53,6 +53,65 @@ export default {
 .header {
   background-color: $white;
 
+  & .header-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 34px 0px 14px;
+    position: relative;
+
+    & .navigation{
+      display: flex;
+      margin: 0 auto 0 62px;
+
+      @media screen and (max-width:1024px) {
+          flex-direction: column;
+      }
+
+      & a {
+        cursor: pointer;
+        margin-right: 20px;
+      }
+    }
+
+    & .icons {
+      display: flex;
+
+      & img{
+        margin-right: 20px;
+      }
+    }
+
+    @media screen and (max-width:768px) {
+      padding-bottom: 38px;
+
+      & .navigation {
+        flex-direction: row;
+      }
+      & .icons {
+        position: absolute;
+        bottom: 8px;
+        right: -20px;
+      }
+    }
+    
+    @media screen and (max-width:425px) {
+      padding-bottom: 80px;
+
+      &  .navigation {
+        position: absolute;
+        flex-direction: column;
+        bottom: 8px;
+        left: -60px;
+      }
+      & .icons {
+        flex-direction: column;
+      }
+      & .profile-icon {
+        margin: 0 auto;
+      }
+    }
+  }
+
   & a,
   & img {
     opacity: 1;
@@ -65,64 +124,5 @@ export default {
   }
 }
 
-.header-wrapper {
-  display: flex;
-  align-items: center;
-  padding: 34px 0px 14px;
-  position: relative;
-}
 
-.navigation{
-  display: flex;
-  margin: 0 auto 0 62px;
-
-  & a {
-    cursor: pointer;
-    margin-right: 20px;
-  }
-}
-
-.icons {
-  display: flex;
-
-  & img{
-    margin-right: 20px;
-  }
-}
-
-@media screen and (max-width:1024px) {
-  .navigation {
-    flex-direction: column;
-  }
-}
-@media screen and (max-width:768px) {
-  .header-wrapper {
-    padding-bottom: 38px;
-  }
-  .navigation {
-    flex-direction: row;
-  }
-  .icons {
-    position: absolute;
-    bottom: 8px;
-    right: -20px;
-  }
-}
-@media screen and (max-width:425px) {
-  .header-wrapper {
-    padding-bottom: 80px;
-  }
-  .navigation {
-    position: absolute;
-    flex-direction: column;
-    bottom: 8px;
-    left: -60px;
-  }
-  .icons {
-    flex-direction: column;
-  }
-  .profile-icon {
-    margin: 0 auto;
-  }
-}
 </style>

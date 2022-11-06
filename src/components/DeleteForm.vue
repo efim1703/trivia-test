@@ -22,7 +22,7 @@ export default {
   name: 'DeleteForm',
   components: {
     CustomButton
-  },
+  }
 }
 </script>
 
