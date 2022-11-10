@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-header />
-    <div class="container">
+    <div class="continer">
       <router-view/>
     </div>
   </div>
@@ -20,7 +20,7 @@ export default {
 
 <style lang="scss">
 @import '@/assets/scss/variables.scss';
-
+//change ....
 #app {
   background-color: #f1f1f1;
   height: 1000px;
